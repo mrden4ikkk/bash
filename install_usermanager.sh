@@ -1,32 +1,27 @@
 #!/bin/bash
 
-# Функція для додавання нового користувача
 add_user() {
     read -p "Введіть ім'я користувача: " username
     sudo adduser "$username"
     echo "Користувача $username додано."
 }
 
-# Функція для видалення користувача
 delete_user() {
     read -p "Введіть ім'я користувача для видалення: " username
     sudo deluser "$username"
     echo "Користувача $username видалено."
 }
 
-# Функція для зміни пароля користувача
 change_password() {
     read -p "Введіть ім'я користувача для зміни пароля: " username
     sudo passwd "$username"
 }
 
-# Функція для відображення списку користувачів
 list_users() {
     echo "Список користувачів:"
     cut -d: -f1 /etc/passwd
 }
 
-# Основне меню
 while true; do
     echo "------ УПРАВЛІННЯ КОРИСТУВАЧАМИ ------"
     echo "1. Додати користувача"
